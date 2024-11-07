@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Inicio </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="page-container">
+    
+    <mat-card class="welcome-card">
+      <img alt="Silhouette of mountains" src="https://www.duoc.cl/wp-content/uploads/2020/05/sede_Antonio_varas-1920x600.jpg" />
+
+      <mat-card-header>
+        <mat-card-title>¡Bienvenido, {{ username }} a RegistrAPP!</mat-card-title>
+        <mat-card-subtitle>Sede Antonio Varas</mat-card-subtitle>
+
+      </mat-card-header>
+      <h2>Sección: {{ nombreAlmacenado }}</h2>
+
+      <mat-card-content>
+        <p>Explora las funcionalidades de la aplicación y disfruta de la experiencia.</p>
+      </mat-card-content>
+      <ion-button shape="round" routerLink="/login" color="tertiary" class="logout-button">Cerrar sesión</ion-button>
+
+    </mat-card>
+
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; max-width: 500px; margin: 0 auto; padding: 20px;">
+    
+  
+      <ion-label *ngIf="nombreAlmacenado" color="primary" style="margin-bottom: 16px;">Nombre almacenado: {{ nombreAlmacenado }}</ion-label>
+      
+      <ion-item style="width: 100%; margin-bottom: 16px;">
+        <ion-label position="floating">Ingrese la Sección</ion-label>
+        <ion-input [(ngModel)]="nombre"></ion-input>
+      </ion-item>
+  
+      <ion-button expand="block" (click)="guardarNombre()" style="margin-bottom: 8px;">Guardar Sección</ion-button>
+      <ion-button expand="block" (click)="obtenerNombre()" style="margin-bottom: 8px;">Obtener Sección   </ion-button>
+  
+      <div *ngIf="nombreAlmacenado" style="margin-top: 16px;">
+      </div>
+      <div *ngIf="!nombreAlmacenado" style="margin-top: 16px;">
+      </div>
+  
+      
+    </div>
+
+    <div style="max-width: 100%; width: 100%;">
+      <h1>Estudiantes del Curso</h1>
+
+      <ion-searchbar [(ngModel)]="searchTerm" placeholder="Buscar estudiante..." class="search-bar"></ion-searchbar>
+
+      <div *ngIf="buscarEstudiantes().length > 0">
+        <ion-list>
+          <ion-item *ngFor="let estudiante of buscarEstudiantes()">
+            <ion-icon name="person" slot="start" color="primary"></ion-icon>
+            <ion-label>
+              <h2>{{ estudiante.nombre }}</h2>
+              <p style="margin: 0;">RUT: {{ estudiante.rut }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <div *ngIf="!buscarEstudiantes().length" class="no-results" style="text-align: center; padding: 20px;">
+        <ion-icon name="alert-circle" size="large" color="medium"></ion-icon>
+        <p style="font-weight: bold;">No se encontraron estudiantes</p>
+        <p>Intenta con otro nombre o verifica el término de búsqueda.</p>
+      </div>
+
+    </div>
+
+    <mat-card-title>Material Complementario</mat-card-title>
+
+      <ion-list>
+        <ion-item *ngFor="let post of posts">
+          <ion-label>
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.body }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+  
+    <ion-content *ngIf="!posts.length">
+      <p>No se encontraron posts</p>
+    </ion-content>

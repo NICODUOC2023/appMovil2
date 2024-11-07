@@ -1,0 +1,33 @@
+/* Fondo blanco para el contenido */
+ion-content {
+  --background: #e6eff8;
+  padding: 16px;
+}
+
+/* Contenedor para centrar el formulario */
+.page-container {
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  height: 100%; /* Ocupa toda la altura del contenido */
+}
+
+/* Contenedor del formulario */
+.form-container {
+  width: 90%; /* Ancho del 90% de la pantalla */
+  max-width: 400px; /* Ancho máximo para dispositivos grandes */
+  background-color: white; /* Fondo blanco para el formulario */
+  padding: 20px; /* Espaciado interno */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilo para los items */
+ion-item {
+  margin-bottom: 16px;
+}
+
+/* Botones */
+ion-button {
+  margin-top: 16px;
+}
